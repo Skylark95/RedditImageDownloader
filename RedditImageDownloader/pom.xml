@@ -37,6 +37,29 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+      	  <descriptorRefs>
+       	    <descriptorRef>jar-with-dependencies</descriptorRef>
+      	  </descriptorRefs>
+      	  <archive>
+            <manifest>
+          	  <mainClass>com.skylark95.redditdownloader.ui.RedditMainWindow</mainClass>
+            </manifest>
+      	  </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -55,6 +78,11 @@
   		<artifactId>gson</artifactId>
   		<version>2.2.2</version>
   	</dependency>
+  	<dependency>
+      <groupId>org.eclipse</groupId>
+      <artifactId>swt</artifactId>
+      <version>win32.x86_64_3.100.1.v4234e</version>
+	</dependency>
   	<dependency>
   		<groupId>org.mockito</groupId>
   		<artifactId>mockito-core</artifactId>

@@ -1,0 +1,8 @@
+/RedditImageDownloader/logs
+/RedditImageDownloader/target/surefire-reports
+/RedditImageDownloader/target/test-classes
+/RedditImageDownloader/target/classes
+/RedditImageDownloader/target/maven-archiver
+/RedditImageDownloader/target/surefire
+/RedditImageDownloader/settings.xml
+/RedditImageDownloader/swt

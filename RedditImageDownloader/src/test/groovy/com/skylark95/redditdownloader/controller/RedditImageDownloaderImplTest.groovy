@@ -17,7 +17,7 @@ public class RedditImageDownloaderImplTest {
 			username:"skylark95",
 			keepUsernames:"true",
 			maxUsernames:"5",
-			saveDirectory:"E:\\Users\\Derek\\Dropbox\\Java\\Eclipse\\DesktopApps\\download\\",
+			saveDirectory:"E:\\Dev\\tmp\\",
 			keepDirectories:"true",
 			maxDirectories:"5",
 			imageLimit:"250",
