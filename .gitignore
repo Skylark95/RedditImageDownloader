@@ -6,3 +6,6 @@
 /RedditImageDownloader/target/surefire
 /RedditImageDownloader/settings.xml
 /RedditImageDownloader/swt
+/RedditImageDownloader/target/generated-classes
+/RedditImageDownloader/target/cobertura
+/RedditImageDownloader/target/site

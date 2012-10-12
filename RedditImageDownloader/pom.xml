@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>RedditImageDownloader</groupId>
   <artifactId>RedditImageDownloader</artifactId>
@@ -15,6 +18,7 @@
         <directory>src/main/resources</directory>
       </resource>
     </resources>
+    <!-- Compile with Groovy -->
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -28,7 +32,7 @@
           <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-eclipse-compiler</artifactId>
-            <version>2.7.0-01</version>            
+            <version>2.7.0-01</version>
           </dependency>
           <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -37,19 +41,21 @@
           </dependency>
         </dependencies>
       </plugin>
+      <!-- Assembly plugin to build full jar -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.3</version>
         <configuration>
-      	  <descriptorRefs>
-       	    <descriptorRef>jar-with-dependencies</descriptorRef>
-      	  </descriptorRefs>
-      	  <archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
             <manifest>
-          	  <mainClass>com.skylark95.redditdownloader.ui.RedditMainWindow</mainClass>
+              <mainClass>
+              com.skylark95.redditdownloader.ui.RedditMainWindow</mainClass>
             </manifest>
-      	  </archive>
+          </archive>
         </configuration>
         <executions>
           <execution>
@@ -62,44 +68,72 @@
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <!-- Code coverage report -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.5.2</version>
+        <configuration>
+          <formats>
+            <format>html</format>
+          </formats>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
   <dependencies>
-  	<dependency>
-  		<groupId>log4j</groupId>
-  		<artifactId>log4j</artifactId>
-  		<version>1.2.17</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.thoughtworks.xstream</groupId>
-  		<artifactId>xstream</artifactId>
-  		<version>1.4.3</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.google.code.gson</groupId>
-  		<artifactId>gson</artifactId>
-  		<version>2.2.2</version>
-  	</dependency>
-  	<dependency>
-      <groupId>org.eclipse</groupId>
-      <artifactId>swt</artifactId>
-      <version>win32.x86_64_3.100.1.v4234e</version>
+    <!-- Dependencies -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.2.2</version>
+    </dependency>
+    <!-- Platform Specific Dependencies -->
+    <dependency>
+	  <groupId>org.eclipse</groupId>
+	  <artifactId>swt-win32-win32-x86</artifactId>
+	  <version>4.2.1</version>
 	</dependency>
-  	<dependency>
-  		<groupId>org.mockito</groupId>
-  		<artifactId>mockito-core</artifactId>
-  		<version>1.9.5-rc1</version>
-  		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.10</version>
-  		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.codehaus.groovy</groupId>
-  		<artifactId>groovy</artifactId>
-  		<version>2.0.4</version>
-  		<scope>test</scope>
-  	</dependency>
+	<!-- <dependency>
+	  <groupId>org.eclipse</groupId>
+	  <artifactId>swt-gtk-linux-x86</artifactId>
+	  <version>4.2.1</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.eclipse</groupId>
+	  <artifactId>swt-cocoa-macosx</artifactId>
+	  <version>4.2.1</version>
+	</dependency> -->
+    <!-- Test Dependencies -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.9.5-rc1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy</artifactId>
+      <version>2.0.4</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
