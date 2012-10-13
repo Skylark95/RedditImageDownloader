@@ -1,20 +1,23 @@
 package com.skylark95.redditdownloader.ui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
-import org.eclipse.wb.swt.SWTResourceManager;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.custom.CLabel;
 
 public class RedditMainWindow {
 
 	protected Shell shlRedditImageDownloader;
 	private Text text;
+	private Text text_1;
 
 	/**
 	 * Launch the application.
@@ -109,49 +112,64 @@ public class RedditMainWindow {
 	}
 
 	private void createStatusFooter() {
-		Label lblNewLabel = new Label(shlRedditImageDownloader, SWT.BORDER | SWT.CENTER);
-		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 10, SWT.NORMAL));
-		lblNewLabel.setBounds(10, 162, 564, 21);
-		lblNewLabel.setText("Welcome to Reddit Image Downloader");
 	}
 
 	private void createButtons() {
-		Button btnDownload = new Button(shlRedditImageDownloader, SWT.NONE);
-		btnDownload.setBounds(183, 120, 75, 25);
-		btnDownload.setText("Download");
 
-		Button btnMoreSettings = new Button(shlRedditImageDownloader, SWT.NONE);
-		btnMoreSettings.setBounds(297, 120, 96, 25);
-		btnMoreSettings.setText("More Settings");
+		Group grpDownlad = new Group(shlRedditImageDownloader, SWT.NONE);
+		grpDownlad.setText("Settings");
+		grpDownlad.setBounds(10, 10, 564, 115);
+		Label lblRedditUsername = new Label(grpDownlad, SWT.NONE);
+		lblRedditUsername.setToolTipText("The username of the Reddit User to downlad Images for.");
+		lblRedditUsername.setBounds(10, 20, 123, 21);
+		lblRedditUsername.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
+		lblRedditUsername.setText("Reddit Username:");
+
+		text = new Text(grpDownlad, SWT.BORDER);
+		text.setToolTipText("The username of the Reddit User to downlad Images for.");
+		text.setBounds(139, 22, 326, 21);
+		Combo combo = new Combo(grpDownlad, SWT.NONE);
+		combo.setToolTipText("The location to save the downloaded images.\r\n\r\nNOTE: This field will keep history of previous save locations by default.  This can be turned off in settings.");
+		combo.setBounds(73, 57, 392, 23);
+
+		Label lblSaveTo = new Label(grpDownlad, SWT.NONE);
+		lblSaveTo
+				.setToolTipText("The location to save the downloaded images.\r\n\r\nNOTE: This field will keep history of previous save locations by default.  This can be turned off in settings.");
+		lblSaveTo.setBounds(10, 55, 57, 21);
+		lblSaveTo.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
+		lblSaveTo.setText("Save To:");
+
+		Button btnBrowse = new Button(grpDownlad, SWT.NONE);
+		btnBrowse.setBounds(471, 55, 76, 25);
+		btnBrowse.setText("Browse");
+		Button btnDownload = new Button(grpDownlad, SWT.NONE);
+		btnDownload.setBounds(472, 20, 75, 25);
+		btnDownload.setText("Download");
+		
+		CLabel lblNewLabel = new CLabel(grpDownlad, SWT.BORDER);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setBounds(10, 86, 537, 21);
+		lblNewLabel.setText("To change more settings, go to File > Settings");
+
+		Group grpLog = new Group(shlRedditImageDownloader, SWT.NONE);
+		grpLog.setText("Log");
+		grpLog.setBounds(10, 142, 564, 390);
+
+		text_1 = new Text(grpLog, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
+		text_1.setBounds(10, 21, 544, 359);
+		text_1.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 	}
 
 	private void createSaveTo() {
-		Combo combo = new Combo(shlRedditImageDownloader, SWT.NONE);
-		combo.setBounds(73, 72, 420, 23);
-
-		Label lblSaveTo = new Label(shlRedditImageDownloader, SWT.NONE);
-		lblSaveTo.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
-		lblSaveTo.setBounds(10, 70, 57, 21);
-		lblSaveTo.setText("Save To:");
-
-		Button btnBrowse = new Button(shlRedditImageDownloader, SWT.NONE);
-		btnBrowse.setBounds(499, 70, 75, 25);
-		btnBrowse.setText("Browse");
 	}
 
 	private void createRedditUsername() {
-		Label lblRedditUsername = new Label(shlRedditImageDownloader, SWT.NONE);
-		lblRedditUsername.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
-		lblRedditUsername.setBounds(10, 31, 123, 21);
-		lblRedditUsername.setText("Reddit Username:");
-
-		text = new Text(shlRedditImageDownloader, SWT.BORDER);
-		text.setBounds(139, 33, 354, 21);
 	}
 
 	private void createWindow() {
 		shlRedditImageDownloader = new Shell();
-		shlRedditImageDownloader.setSize(600, 250);
+		shlRedditImageDownloader.setSize(600, 600);
 		shlRedditImageDownloader.setText("Reddit Image Downloader");
 	}
 }

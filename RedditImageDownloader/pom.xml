@@ -9,6 +9,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <name>Reddit Image Downloader</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <swt.artifactId>win32-win32-x86_64</swt.artifactId>
+    <swt.version>4.2.1</swt.version>
+    <downloader.version>0.8</downloader.version>
   </properties>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
@@ -47,6 +50,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.3</version>
         <configuration>
+          <finalName>RedditImageDownloader-${downloader.version}-${swt.artifactId}</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
@@ -100,22 +105,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <artifactId>gson</artifactId>
       <version>2.2.2</version>
     </dependency>
-    <!-- Platform Specific Dependencies -->
-    <dependency>
-	  <groupId>org.eclipse</groupId>
-	  <artifactId>swt-win32-win32-x86</artifactId>
-	  <version>4.2.1</version>
-	</dependency>
-	<!-- <dependency>
-	  <groupId>org.eclipse</groupId>
-	  <artifactId>swt-gtk-linux-x86</artifactId>
-	  <version>4.2.1</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.eclipse</groupId>
-	  <artifactId>swt-cocoa-macosx</artifactId>
-	  <version>4.2.1</version>
-	</dependency> -->
     <!-- Test Dependencies -->
     <dependency>
       <groupId>org.mockito</groupId>
@@ -134,6 +123,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <artifactId>groovy</artifactId>
       <version>2.0.4</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.swt</groupId>
+      <artifactId>${swt.artifactId}</artifactId>
+      <version>${swt.version}</version>
     </dependency>
   </dependencies>
 </project>
