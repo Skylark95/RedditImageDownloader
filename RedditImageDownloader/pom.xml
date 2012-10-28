@@ -58,7 +58,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
           <archive>
             <manifest>
               <mainClass>
-              com.skylark95.redditdownloader.ui.RedditMainWindow</mainClass>
+              com.skylark95.redditdownloader.ui.Launcher</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -122,7 +122,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
       <version>2.0.4</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.eclipse.swt</groupId>
