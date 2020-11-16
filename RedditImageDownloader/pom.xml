@@ -98,7 +98,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
-      <version>1.4.3</version>
+      <version>1.4.13-java7</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
